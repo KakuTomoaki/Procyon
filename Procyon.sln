@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procyon.CSharp", "Procyon.CSharp.csproj", "{2C3873EF-2B3F-5363-AE5A-A0CD0BE6EF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procyon.CSharp.Editor", "Procyon.CSharp.Editor.csproj", "{C833914A-CA2F-8324-4E05-F569C4D17968}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3873EF-2B3F-5363-AE5A-A0CD0BE6EF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3873EF-2B3F-5363-AE5A-A0CD0BE6EF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3873EF-2B3F-5363-AE5A-A0CD0BE6EF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3873EF-2B3F-5363-AE5A-A0CD0BE6EF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C833914A-CA2F-8324-4E05-F569C4D17968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C833914A-CA2F-8324-4E05-F569C4D17968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C833914A-CA2F-8324-4E05-F569C4D17968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C833914A-CA2F-8324-4E05-F569C4D17968}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
