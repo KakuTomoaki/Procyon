@@ -10,6 +10,7 @@ public class PlayerHp : MonoBehaviour {
     int damage = 100;
 
     public Text armorText;
+    public Image gaugeImage;
 
     int displayArmorPoint;
     
@@ -24,10 +25,15 @@ public class PlayerHp : MonoBehaviour {
 	void Update () {
 
 
-        //現在の体力と表示用体力が異なっていれば、現在の体力になるまで加減算する
-        if(displayArmorPoint != armorPoint) {
-            displayArmorPoint = (int)Mathf.Lerp(displayArmorPoint, armorPoint, 0.1f);
+        //現在の体力が0以下の場合は=0
+        if (armorPoint < 0) {
+            armorPoint = 0;
+        } else{
+            if (displayArmorPoint != armorPoint) {
+                displayArmorPoint = (int)Mathf.Lerp(displayArmorPoint, armorPoint, 0.1f);
+            }
         }
+
 
         //体力をUI Textに表示する
         armorText.text = string.Format("{0:0000}", displayArmorPoint, armorPointMax);
@@ -35,13 +41,17 @@ public class PlayerHp : MonoBehaviour {
         //残り体力の割合により文字の色を変える
         float percentageArmorPoint = (float)displayArmorPoint / armorPointMax;
 
-        if(percentageArmorPoint > 0.5f) {
+        if (percentageArmorPoint > 0.5f) {
             armorText.color = Color.white;
-        } else if(percentageArmorPoint > 0.3f) {
+        } else if (percentageArmorPoint > 0.3f) {
             armorText.color = Color.yellow;
         } else {
             armorText.color = Color.red;
-        }	
+        }
+
+        //ゲージの長さを体力の割合に合わせて伸縮させる
+        gaugeImage.transform.localScale = new Vector3(percentageArmorPoint, 1, 1);
+
 	}
 
     private void OnCollisionEnter(Collision collider) {
