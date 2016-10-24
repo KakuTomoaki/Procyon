@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class PlayerMove : MonoBehaviour {
 
     public float speed = 15.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
+    public float boostSpeed = 30f;
     private Vector3 moveDirection = Vector3.zero;
 
     int boostPoint;
@@ -17,9 +19,9 @@ public class PlayerMove : MonoBehaviour {
     Vector3 moveSpeed;
 
     const float addNormalSpeed = 1;     //通常時の加速速度
-    const float addBoostSpeed = 2;      //ブースト時の加速速度
+    const float addBoostSpeed = 75;      //ブースト時の加速速度(ブースト速度)
     const float moveSpeedMax = 20;      //通常時の最大速度
-    const float boostSpeedMax = 40;     //ブースト時の最大速度
+    const float boostSpeedMax = 250;     //ブースト時の最大速度(今は使ってないす)
 
     private float Boost_CD = 0;
     bool isBoost;
@@ -44,26 +46,27 @@ public class PlayerMove : MonoBehaviour {
             moveDirection.y = 0;
         }
         //ブーストボタンが押されていればフラグを立て、ブーストポイントを消費
-        if(Input.GetButton("Boost") && boostPoint > 20 && isBoost_CD == false) {
+        if(Input.GetButtonDown("Boost") && boostPoint > 500 && isBoost_CD == false) {
             isBoost = true;
-            //isBoost_CD = true;
-            //Boost_CD += Time.deltaTime;
-            //PlayerHp.armorPoint -= 10;
-            boostPoint -= 20;
+            isBoost_CD = true;
+            boostPoint -= 300;
+
             //moveDirection.x *= 20;
             //moveDirection.z *= 1000;
-            Debug.Log("ブースト開始");
+            Debug.Log("ブースト/クールダウン開始");
         } else {
             isBoost = false;
-            /*
+        }
+        //ブーストクールダウン
+        if(isBoost_CD == true) {
+            Boost_CD += Time.deltaTime;
             if (Boost_CD > 1.0f) {
-                Debug.Log("ブーストクールダウン開始");
                 Boost_CD = 0;
                 isBoost_CD = false;
                 Debug.Log("ブーストクールダウン終了+フラグオフ");
             }
-            */
         }
+
 
         Vector3 targetSpeed = Vector3.zero;     //目標速度
         Vector3 addSpeed = Vector3.zero;        //加速速度
@@ -144,14 +147,14 @@ public class PlayerMove : MonoBehaviour {
                 moveDirection.y = 0;
             } else {
                 moveDirection.y += gravity * Time.deltaTime;
-                boostPoint -= 10;
+                boostPoint -= 1;
             }
         } else {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        if(!Input.GetButton("Boost") && !Input.GetButton("Jump")) {
-            boostPoint += 20;
+        if(!Input.GetButton("Jump")) {
+            boostPoint += 5;
             boostPoint = Mathf.Clamp(boostPoint, 0, boostPointMax);
         }
 
@@ -159,6 +162,7 @@ public class PlayerMove : MonoBehaviour {
 
         //ブーストゲージの伸縮
         gaugeImage.transform.localScale = new Vector3((float)boostPoint / boostPointMax, 1, 1);
-	
-	}
+
+    }
+    
 }

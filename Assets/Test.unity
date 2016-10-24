@@ -95,6 +95,21 @@ NavMeshSettings:
 GameObject:
   m_PrefabParentObject: {fileID: 136798, guid: aada9fdf6265e0e40bc2b9f06b717c02, type: 2}
   m_PrefabInternal: {fileID: 736487182}
+--- !u!54 &88387057
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88387056}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &88387058 stripped
 Transform:
   m_PrefabParentObject: {fileID: 424016, guid: aada9fdf6265e0e40bc2b9f06b717c02, type: 2}
@@ -113,6 +128,7 @@ MonoBehaviour:
   speed: 15
   jumpSpeed: 8
   gravity: 20
+  boostSpeed: 50
   boostPointMax: 3000
   gaugeImage: {fileID: 1987373264}
 --- !u!143 &88387060
