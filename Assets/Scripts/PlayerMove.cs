@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour {
     const float addNormalSpeed = 1;     //通常時の加速速度
     const float addBoostSpeed = 75;      //ブースト時の加速速度(ブースト速度)
     const float moveSpeedMax = 20;      //通常時の最大速度
-    const float boostSpeedMax = 250;     //ブースト時の最大速度(今は使ってないす)
+    const float boostSpeedMax = 75;     //ブースト時の最大速度(今は使ってないす)
 
     private float Boost_CD = 0;
     bool isBoost;
@@ -50,9 +50,7 @@ public class PlayerMove : MonoBehaviour {
             isBoost = true;
             isBoost_CD = true;
             boostPoint -= 300;
-
-            //moveDirection.x *= 20;
-            //moveDirection.z *= 1000;
+            
             Debug.Log("ブースト/クールダウン開始");
         } else {
             isBoost = false;
@@ -60,7 +58,7 @@ public class PlayerMove : MonoBehaviour {
         //ブーストクールダウン
         if(isBoost_CD == true) {
             Boost_CD += Time.deltaTime;
-            if (Boost_CD > 1.0f) {
+            if (Boost_CD > 0.5f) {
                 Boost_CD = 0;
                 isBoost_CD = false;
                 Debug.Log("ブーストクールダウン終了+フラグオフ");
@@ -126,22 +124,7 @@ public class PlayerMove : MonoBehaviour {
         moveDirection = transform.TransformDirection(moveDirection);
         
 
-        /*
-        if(controller.isGrounded) {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-
-            //ブーストキーによる高速移動
-            if(Input.GetButton("Boost") && boostPoint > 1) {
-                moveDirection.x *= 10;
-                moveDirection.z *= 10;
-                boostPoint -= 150;
-            }
-
-        }
-        */
-
+        //ジャンプ
         if (Input.GetButton("Jump") && boostPoint > 1) {
             if (transform.position.y > 100) {
                 moveDirection.y = 0;
@@ -153,6 +136,7 @@ public class PlayerMove : MonoBehaviour {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
+        //ジャンプを押していない時
         if(!Input.GetButton("Jump")) {
             boostPoint += 5;
             boostPoint = Mathf.Clamp(boostPoint, 0, boostPointMax);
