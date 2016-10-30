@@ -19,13 +19,14 @@ public class PlayerMove : MonoBehaviour {
     Vector3 moveSpeed;
 
     const float addNormalSpeed = 1;     //通常時の加速速度
-    const float addBoostSpeed = 75;      //ブースト時の加速速度(ブースト速度)
+    const float addBoostSpeed = 50;      //ブースト時の加速速度(ブースト速度)
     const float moveSpeedMax = 20;      //通常時の最大速度
-    const float boostSpeedMax = 75;     //ブースト時の最大速度(今は使ってないす)
+    const float boostSpeedMax = 50;     //ブースト時の最大速度(今は使ってないす)
 
     private float Boost_CD = 0;
     bool isBoost;
     bool isBoost_CD;
+    bool isBoost_TS;
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +50,7 @@ public class PlayerMove : MonoBehaviour {
         if(Input.GetButtonDown("Boost") && boostPoint > 500 && isBoost_CD == false) {
             isBoost = true;
             isBoost_CD = true;
+            isBoost_TS = true;
             boostPoint -= 300;
             
             Debug.Log("ブースト/クールダウン開始");
@@ -64,7 +66,6 @@ public class PlayerMove : MonoBehaviour {
                 Debug.Log("ブーストクールダウン終了+フラグオフ");
             }
         }
-
 
         Vector3 targetSpeed = Vector3.zero;     //目標速度
         Vector3 addSpeed = Vector3.zero;        //加速速度
@@ -142,11 +143,22 @@ public class PlayerMove : MonoBehaviour {
             boostPoint = Mathf.Clamp(boostPoint, 0, boostPointMax);
         }
 
-        controller.Move(moveDirection * Time.deltaTime);
+        if (isBoost_TS == true) {
+            controller.Move(moveDirection * 4 * Time.deltaTime);
+            StartCoroutine("BoostTS_Flag");
+        } else {
+            controller.Move(moveDirection * Time.deltaTime);
+        }
+
 
         //ブーストゲージの伸縮
         gaugeImage.transform.localScale = new Vector3((float)boostPoint / boostPointMax, 1, 1);
 
+    }
+
+    IEnumerator BoostTS_Flag() {
+        yield return new WaitForSeconds(0.2f);
+        isBoost_TS = false;
     }
     
 }
