@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour {
     public float boostSpeed = 30f;
     private Vector3 moveDirection = Vector3.zero;
 
+    Vector3 targetSpeed = Vector3.zero;     //目標速度
+    Vector3 addSpeed = Vector3.zero;        //加速速度
+
     int boostPoint;
     public int boostPointMax = 3000;
 
@@ -21,7 +24,7 @@ public class PlayerMove : MonoBehaviour {
     const float addNormalSpeed = 1;     //通常時の加速速度
     const float addBoostSpeed = 50;      //ブースト時の加速速度(ブースト速度)
     const float moveSpeedMax = 20;      //通常時の最大速度
-    const float boostSpeedMax = 50;     //ブースト時の最大速度(今は使ってないす)
+    const float boostSpeedMax = 50;     //ブースト時の最大速度
 
     private float Boost_CD = 0;
     bool isBoost;
@@ -46,17 +49,19 @@ public class PlayerMove : MonoBehaviour {
         if(controller.isGrounded) {
             moveDirection.y = 0;
         }
-        //ブーストボタンが押されていればフラグを立て、ブーストポイントを消費
-        if(Input.GetButtonDown("Boost") && boostPoint > 500 && isBoost_CD == false) {
+        //ブーストボタンが押されるとフラグを立て、ブーストポイントを消費
+        if (Input.GetButtonDown("Boost") && boostPoint >= 300 && isBoost_CD == false) {
             isBoost = true;
             isBoost_CD = true;
             isBoost_TS = true;
             boostPoint -= 300;
-            
             Debug.Log("ブースト/クールダウン開始");
+
         } else {
             isBoost = false;
         }
+
+
         //ブーストクールダウン
         if(isBoost_CD == true) {
             Boost_CD += Time.deltaTime;
@@ -66,9 +71,6 @@ public class PlayerMove : MonoBehaviour {
                 Debug.Log("ブーストクールダウン終了+フラグオフ");
             }
         }
-
-        Vector3 targetSpeed = Vector3.zero;     //目標速度
-        Vector3 addSpeed = Vector3.zero;        //加速速度
 
         //左右移動時の目標速度と加速速度
         if(Input.GetAxis("Horizontal") == 0) {
