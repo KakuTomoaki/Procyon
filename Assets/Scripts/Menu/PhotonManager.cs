@@ -89,7 +89,7 @@ public class PhotonManager : Photon.MonoBehaviour
     void OnJoinedRoom()
     {
         Debug.Log("PhotonManager OnJoinedRoom");
-        //Application.LoadLevel("Test");
+        
         CanvasMenu.GetComponent<Canvas>().enabled = false;
 
         GameObject myPlayer = PhotonNetwork.Instantiate("azalea", new Vector3(0, 0, 0), Quaternion.identity, 0);
