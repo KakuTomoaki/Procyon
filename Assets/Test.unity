@@ -664,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &623413304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,8 +1550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1658530e29af2ea4b83b3fa85cc29d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1000010373585494, guid: 57b5e05b1eeadbb41b5a8e1a531d33d2, type: 2}
-  canvasObject: {fileID: 566194887}
+  Prefab: {fileID: 0}
+  canvasObject: {fileID: 0}
 --- !u!1 &1987373262
 GameObject:
   m_ObjectHideFlags: 0

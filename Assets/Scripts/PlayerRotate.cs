@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class PlayerRotate : MonoBehaviour {
-
-    public GameObject target_C;
-    public GameObject target_P;
+    
     public float RotationSensitivity = 200f;// 感度
 
     // Use this for initialization
@@ -14,8 +12,6 @@ public class PlayerRotate : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        target_C = GameObject.Find("CameraParent");
-        target_P = GameObject.Find("azalea");
         var rotX = Input.GetAxis("Mouse X") * Time.deltaTime * RotationSensitivity;
         //キャラの回転
         transform.Rotate(Vector3.up, rotX * 1.5f, 0);
