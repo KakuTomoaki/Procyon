@@ -9,13 +9,16 @@ public class PlayerHp : MonoBehaviour {
 
     int damage = 100;
 
-    public Text armorText;
-    public Image gaugeImage;
+    Text armorText;
+    Image gaugeImage;
 
     int displayArmorPoint;
     
 	// Use this for initialization
 	void Start () {
+        armorText = GameObject.Find("CanvasBattle/PlayerHP/TextHp").GetComponent<Text>();
+        gaugeImage = GameObject.Find("CanvasBattle/PlayerHP/HpGauge").GetComponent<Image>();
+
         armorPoint = armorPointMax;
         displayArmorPoint = armorPoint;
 	
@@ -23,7 +26,6 @@ public class PlayerHp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 
         //現在の体力が0以下の場合は=0
         if (armorPoint < 0) {

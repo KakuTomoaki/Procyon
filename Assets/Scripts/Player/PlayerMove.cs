@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour {
     int boostPoint;
     public int boostPointMax = 3000;
 
-    public Image gaugeImage;
+    Image gaugeImage;
 
     Vector3 moveSpeed;
 
@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        gaugeImage = GameObject.Find("CanvasBattle/Boost/BoostGauge").GetComponent<Image>();
         boostPoint = boostPointMax;
 
         moveSpeed = Vector3.zero;
@@ -151,7 +152,6 @@ public class PlayerMove : MonoBehaviour {
         } else {
             controller.Move(moveDirection * Time.deltaTime);
         }
-
 
         //ブーストゲージの伸縮
         gaugeImage.transform.localScale = new Vector3((float)boostPoint / boostPointMax, 1, 1);
