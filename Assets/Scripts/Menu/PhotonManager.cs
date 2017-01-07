@@ -4,15 +4,17 @@ using UnityEngine.UI;
 
 public class PhotonManager : Photon.MonoBehaviour
 {
-    public GameObject Prefab;
-    public GameObject canvasObject;
+    public GameObject Join;
     private GameObject CanvasMenu;
+    private GameObject CanvasBattle;
 
     // Use this for initialization
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v1.0");
         CanvasMenu = GameObject.Find("CanvasMenu");
+        CanvasBattle = GameObject.Find("CanvasBattle");
+        CanvasBattle.GetComponent<Canvas>().enabled = false;
 
         //初期設定
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -49,11 +51,12 @@ public class PhotonManager : Photon.MonoBehaviour
                 Debug.Log("RoomName:" + rooms[i].name);
                 Debug.Log("userName:" + rooms[i].customProperties["userName"]);
                 Debug.Log("userId:" + rooms[i].customProperties["userId"]);
-                GameObject newJoin = (GameObject)Instantiate(Prefab, new Vector3(0, gameObject.transform.position.y - (120 * i) - 240, 0), Quaternion.identity);
-                newJoin.transform.SetParent(canvasObject.transform, false);
+
+                GameObject newJoin = (GameObject)Instantiate(Join, new Vector3(0, gameObject.transform.position.y - (120 * i) - 240, 0), Quaternion.identity);
+                newJoin.transform.SetParent(CanvasMenu.transform, false);
                 newJoin.name = rooms[i].name;
-                //newJoin.GetComponent<Text>().text = "rooms [i].name";
-                
+                newJoin.GetComponent<Text>().text = rooms[i].name;
+
             }
         }
     }
@@ -81,7 +84,7 @@ public class PhotonManager : Photon.MonoBehaviour
     }
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom("user1");
+        PhotonNetwork.JoinRoom(transform.name);
 
     }
 
@@ -91,6 +94,7 @@ public class PhotonManager : Photon.MonoBehaviour
         Debug.Log("PhotonManager OnJoinedRoom");
         
         CanvasMenu.GetComponent<Canvas>().enabled = false;
+        CanvasBattle.GetComponent<Canvas>().enabled = true;
 
         GameObject myPlayer = PhotonNetwork.Instantiate("azalea", new Vector3(0, 0, 0), Quaternion.identity, 0);
         //  自分が生成したPlayerを移動可能にする

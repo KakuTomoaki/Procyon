@@ -22,7 +22,7 @@ GameObject:
   - 222: {fileID: 222000010848922660}
   - 114: {fileID: 114000010529993300}
   - 114: {fileID: 114000011996503580}
-  - 114: {fileID: 114000011915087334}
+  - 114: {fileID: 114000013024884384}
   m_Layer: 5
   m_Name: Join
   m_TagString: Untagged
@@ -74,17 +74,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114000011915087334
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010373585494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c229044f6cdfe459b4227ddc3b8f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000011996503580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +113,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000011915087334}
+      - m_Target: {fileID: 114000013024884384}
         m_MethodName: JoinRoom
         m_Mode: 1
         m_Arguments:
@@ -170,6 +159,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Text
+--- !u!114 &114000013024884384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010373585494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1658530e29af2ea4b83b3fa85cc29d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Join: {fileID: 0}
 --- !u!222 &222000010848922660
 CanvasRenderer:
   m_ObjectHideFlags: 1
