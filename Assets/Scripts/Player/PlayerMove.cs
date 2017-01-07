@@ -30,11 +30,16 @@ public class PlayerMove : MonoBehaviour {
     bool isBoost;
     bool isBoost_CD;
     bool isBoost_TS;
+    private AudioSource SE_boost;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         gaugeImage = GameObject.Find("CanvasBattle/Boost/BoostGauge").GetComponent<Image>();
         boostPoint = boostPointMax;
+
+        //SEをキャッシュ
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        SE_boost = audioSources[4];
 
         moveSpeed = Vector3.zero;
 
@@ -56,6 +61,7 @@ public class PlayerMove : MonoBehaviour {
             isBoost_CD = true;
             isBoost_TS = true;
             boostPoint -= 300;
+            SE_boost.PlayOneShot(SE_boost.clip);
             Debug.Log("ブースト/クールダウン開始");
 
         } else {

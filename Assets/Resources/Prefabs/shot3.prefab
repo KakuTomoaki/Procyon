@@ -119,16 +119,6 @@ TrailRenderer:
   - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
   - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
   - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
-  - {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -144,7 +134,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1
   m_StartWidth: 10
   m_EndWidth: 10
   m_Colors:

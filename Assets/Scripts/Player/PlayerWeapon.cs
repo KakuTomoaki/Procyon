@@ -43,6 +43,12 @@ public class PlayerWeapon : MonoBehaviour {
     int weapon3shotCountMax = 3;
     float weapon3reloadtime = 5;
 
+    //音関連
+    private AudioSource SE_weapon1;
+    private AudioSource SE_weapon2;
+    private AudioSource SE_weapon3;
+    private AudioSource SE_reload;
+
 
     // Use this for initialization
     void Start() {
@@ -61,6 +67,13 @@ public class PlayerWeapon : MonoBehaviour {
         weapon1shotCount = weapon1shotCountMax;
         weapon2shotCount = weapon2shotCountMax;
         weapon3shotCount = weapon3shotCountMax;
+        
+        //SEをキャッシュ
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        SE_weapon1 = audioSources[0];
+        SE_weapon2 = audioSources[1];
+        SE_weapon3 = audioSources[2];
+        SE_reload = audioSources[3];
 
     }
 
@@ -81,6 +94,7 @@ public class PlayerWeapon : MonoBehaviour {
         if (Input.GetButton("Reload")) {
             if (reloadInterval > reloadIntervalMax) {
                 reloadFlag = true;
+                SE_reload.PlayOneShot(SE_reload.clip);
                 if (useWeapon == 1) {
                     Debug.Log("wepon1リロード中 + ReloadフラグOn");
                     Invoke("Reload", weapon1reloadtime);
@@ -157,6 +171,7 @@ public class PlayerWeapon : MonoBehaviour {
                 if (shotInterval > shotIntervalMax) {
                     //弾を発射する
                     Debug.Log("useWeapon = 1");
+                    SE_weapon1.PlayOneShot(SE_weapon1.clip);
                     Instantiate(shot, muzzle.transform.position, Camera.main.transform.rotation);
                     weapon1shotCount -= 1;
                     shotInterval = 0;
@@ -175,6 +190,7 @@ public class PlayerWeapon : MonoBehaviour {
                 if (shotInterval > shotIntervalMax) {
                     //弾を発射する
                     Debug.Log("useWeapon = 2");
+                    SE_weapon2.PlayOneShot(SE_weapon2.clip);
                     Instantiate(shot2, muzzle.transform.position, Camera.main.transform.rotation);
                     weapon2shotCount -= 1;
                     shotInterval = 0;
@@ -192,6 +208,7 @@ public class PlayerWeapon : MonoBehaviour {
                 if (shotInterval > shotIntervalMax) {
                     //弾を発射する
                     Debug.Log("useWeapon = 3");
+                    SE_weapon3.PlayOneShot(SE_weapon3.clip);
                     Instantiate(shot3, muzzle.transform.position, Camera.main.transform.rotation);
                     weapon3shotCount -= 1;
                     shotInterval = 0;
@@ -232,6 +249,10 @@ public class PlayerWeapon : MonoBehaviour {
         */
 
     }
+
+    /*
+    ---------------------リロード関連---------------------------
+    */
     void Reload() {
         if (useWeapon == 1) {
             weapon1shotCount = weapon1shotCountMax;
