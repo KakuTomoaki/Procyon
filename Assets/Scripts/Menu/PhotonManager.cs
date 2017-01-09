@@ -100,6 +100,7 @@ public class PhotonManager : Photon.MonoBehaviour
         GameObject myPlayer = PhotonNetwork.Instantiate("azalea", new Vector3(0, 0, 0), Quaternion.identity, 0);
         //  自分が生成したPlayerを移動可能にする
         myPlayer.GetComponent<PlayerMove>().enabled = true;
+        myPlayer.name = "azalea";
         //myPlayer.GetComponent<Camera>().enabled = true;
         //MenuカメラをOFFにする
         MenuCamera.enabled = false;
