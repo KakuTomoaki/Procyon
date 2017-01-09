@@ -286,8 +286,8 @@
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraRotate.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraRotate2.cs" />
+    <Compile Include="Assets\Scripts\Menu\JoinRoom.cs" />
     <Compile Include="Assets\Scripts\Menu\PhotonManager.cs" />
-    <Compile Include="Assets\Scripts\Menu\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Player\AutoDestroy.cs" />
     <Compile Include="Assets\Scripts\Player\BoostEffect.cs" />
     <Compile Include="Assets\Scripts\Player\ParticleAutoDestroy.cs" />
