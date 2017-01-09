@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraRotate2 : MonoBehaviour {
     
     public float RotationSensitivity = 100f;// 感度
-    public GameObject target_P;
+    GameObject target_P;
                                             // Use this for initialization
     void Start () {
 

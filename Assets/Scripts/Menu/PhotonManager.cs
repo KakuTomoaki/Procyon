@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PhotonManager : Photon.MonoBehaviour
 {
     public GameObject Join;
+    public Camera MenuCamera;
     private GameObject CanvasMenu;
     private GameObject CanvasBattle;
 
@@ -100,5 +101,7 @@ public class PhotonManager : Photon.MonoBehaviour
         //  自分が生成したPlayerを移動可能にする
         myPlayer.GetComponent<PlayerMove>().enabled = true;
         //myPlayer.GetComponent<Camera>().enabled = true;
+        //MenuカメラをOFFにする
+        MenuCamera.enabled = false;
     }
 }

@@ -21,6 +21,5 @@ public class BoostEffect : MonoBehaviour {
             flgBoost = true;
         }
         boostLight.SetActive(flgBoost);
-
     }
 }

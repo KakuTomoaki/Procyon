@@ -299,18 +299,6 @@
     <Compile Include="Assets\Scripts\Player\Weapon1.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon2.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon3.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\AutoBlink.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\IKCtrlRightHand.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\IdleChanger.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\RandomWind.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\SpringBone.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\SpringCollider.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\SpringManager.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\ThirdPersonCamera.cs" />
-    <Compile Include="Assets\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
-    <Compile Include="Assets\UnityChan\SplashScreen\Scripts\SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DL_Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
@@ -410,18 +398,6 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
-    <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
-    <None Include="Assets\UnityChan\Stage\Shader\AlphaMask.shader" />
-    <None Include="Assets\UnityChan\Voice\unity-chan_voice_list.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
