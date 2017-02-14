@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove : Photon.MonoBehaviour {
 
     public float speed = 15.0f;
     public float jumpSpeed = 8.0f;
@@ -32,8 +32,22 @@ public class PlayerMove : MonoBehaviour {
     bool isBoost_TS;
     private AudioSource SE_boost;
 
+    public PhotonView myPV;
+    public Camera myCam1;
+    public GameObject myCam2;
+
     // Use this for initialization
     void Start () {
+
+        if (!photonView.isMine)
+        {
+            GetComponent<PlayerMove>().enabled = false;
+            GetComponent<PlayerRotate>().enabled = false;
+            myCam1.transform.gameObject.SetActive(false);
+            myCam2.transform.gameObject.SetActive(false);
+            Destroy(this);
+        }
+
         gaugeImage = GameObject.Find("CanvasBattle/Boost/BoostGauge").GetComponent<Image>();
         boostPoint = boostPointMax;
 

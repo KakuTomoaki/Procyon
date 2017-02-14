@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerWeapon : MonoBehaviour {
+public class PlayerWeapon : Photon.MonoBehaviour {
 
     GameObject shot;
     GameObject shot2;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoostEffect : MonoBehaviour {
+public class BoostEffect : Photon.MonoBehaviour {
 
     GameObject boostLight;
 

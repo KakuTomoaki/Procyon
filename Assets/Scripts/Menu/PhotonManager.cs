@@ -82,6 +82,7 @@ public class PhotonManager : Photon.MonoBehaviour
         roomOptions.isVisible = true; //ロビーから見えるようにする
         //userIdが名前のルームがなければ作って入室、あれば普通に入室する。
         PhotonNetwork.JoinOrCreateRoom(userId, roomOptions, null);
+        
     }
     public void JoinRoom()
     {
@@ -98,10 +99,7 @@ public class PhotonManager : Photon.MonoBehaviour
         CanvasBattle.GetComponent<Canvas>().enabled = true;
 
         GameObject myPlayer = PhotonNetwork.Instantiate("azalea", new Vector3(0, 0, 0), Quaternion.identity, 0);
-        //  自分が生成したPlayerを移動可能にする
-        myPlayer.GetComponent<PlayerMove>().enabled = true;
-        myPlayer.name = "azalea";
-        //myPlayer.GetComponent<Camera>().enabled = true;
+        
         //MenuカメラをOFFにする
         MenuCamera.enabled = false;
     }

@@ -3609,6 +3609,9 @@ MonoBehaviour:
   gravity: 20
   boostSpeed: 50
   boostPointMax: 3000
+  myPV: {fileID: 114000012315275870}
+  myCam1: {fileID: 20000011365159506}
+  myCam2: {fileID: 1000014269744900}
 --- !u!114 &114000010726350810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3704,7 +3707,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSensitivity: 100
-  target_P: {fileID: 0}
 --- !u!114 &114000014203715358
 MonoBehaviour:
   m_ObjectHideFlags: 1
