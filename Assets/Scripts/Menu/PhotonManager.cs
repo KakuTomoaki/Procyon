@@ -5,21 +5,25 @@ using UnityEngine.UI;
 public class PhotonManager : Photon.MonoBehaviour
 {
     public GameObject Join;
+    public GameObject newJoin;
     public Camera MenuCamera;
     private GameObject CanvasMenu;
     private GameObject CanvasBattle;
+    private int count;
 
     // Use this for initialization
     void Start()
     {
+        //初期設定
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         PhotonNetwork.ConnectUsingSettings("v1.0");
         CanvasMenu = GameObject.Find("CanvasMenu");
         CanvasBattle = GameObject.Find("CanvasBattle");
         CanvasBattle.GetComponent<Canvas>().enabled = false;
 
-        //初期設定
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
+        count = 1;
+        
     }
 
     void OnJoinedLobby()
@@ -42,30 +46,34 @@ public class PhotonManager : Photon.MonoBehaviour
         if (rooms.Length == 0)
         {
             GameObject.Find("StatusText").GetComponent<Text>().text = "Roomが1つもありません";
+            //ここにルームがある場合、ルームの削除処理を入れないといけない。
+            Destroy(newJoin);
         }
         else {
 
             //ルームが1件以上ある時ループでRoomInfo情報をログ出力
             for (int i = 0; i < rooms.Length; i++)
             {
+                
                 GameObject.Find("StatusText").GetComponent<Text>().text = "";
                 Debug.Log("RoomName:" + rooms[i].name);
                 Debug.Log("userName:" + rooms[i].customProperties["userName"]);
                 Debug.Log("userId:" + rooms[i].customProperties["userId"]);
-
-                GameObject newJoin = (GameObject)Instantiate(Join, new Vector3(0, gameObject.transform.position.y - (120 * i) - 240, 0), Quaternion.identity);
+                
+                //2つ以上ルームが出来た際にエラーが出るので↓のソースの改変が必要かと思われる。
+                newJoin = (GameObject)Instantiate(Join, new Vector3(0, gameObject.transform.position.y - (120 * i) - 240, 0), Quaternion.identity);
                 newJoin.transform.SetParent(CanvasMenu.transform, false);
                 newJoin.name = rooms[i].name;
-                newJoin.GetComponent<Text>().text = rooms[i].name;
-
+                GameObject.Find(rooms[i].name +"/Text").GetComponent<Text>().text = "Room" + count;
             }
         }
     }
 
     public void CreateRoom()
     {
-        string userName = "ユーザ1";
-        string userId = "user1";
+
+        string userName = "ユーザ" + count;
+        string userId = "user" + count;
         PhotonNetwork.autoCleanUpPlayerObjects = false;
         //カスタムプロパティ
         ExitGames.Client.Photon.Hashtable customProp = new ExitGames.Client.Photon.Hashtable();
@@ -80,8 +88,12 @@ public class PhotonManager : Photon.MonoBehaviour
         roomOptions.maxPlayers = 2; //部屋の最大人数
         roomOptions.isOpen = true; //入室許可する
         roomOptions.isVisible = true; //ロビーから見えるようにする
-        //userIdが名前のルームがなければ作って入室、あれば普通に入室する。
+
+        count++;
+
+        //userIdが名前のルームがなければ作って入室、あれば普通に入室する。 ←よく意味がわからない
         PhotonNetwork.JoinOrCreateRoom(userId, roomOptions, null);
+
         
     }
     public void JoinRoom()
@@ -99,7 +111,8 @@ public class PhotonManager : Photon.MonoBehaviour
         CanvasBattle.GetComponent<Canvas>().enabled = true;
 
         GameObject myPlayer = PhotonNetwork.Instantiate("azalea", new Vector3(0, 0, 0), Quaternion.identity, 0);
-        
+        myPlayer.name = "azalea";
+
         //MenuカメラをOFFにする
         MenuCamera.enabled = false;
     }

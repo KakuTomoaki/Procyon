@@ -43,6 +43,7 @@ public class PlayerMove : Photon.MonoBehaviour {
         {
             GetComponent<PlayerMove>().enabled = false;
             GetComponent<PlayerRotate>().enabled = false;
+            GetComponent<PlayerMotion>().enabled = false;
             myCam1.transform.gameObject.SetActive(false);
             myCam2.transform.gameObject.SetActive(false);
             Destroy(this);

@@ -102,7 +102,7 @@ public class PlayerWeapon : Photon.MonoBehaviour {
                     Debug.Log("wepon2リロード中 + ReloadフラグOn");
                     Invoke("Reload", weapon2reloadtime);
                 } else if (useWeapon == 3) {
-                    Debug.Log("wepon1リロード中 + ReloadフラグOn");
+                    Debug.Log("wepon3リロード中 + ReloadフラグOn");
                     Invoke("Reload", weapon3reloadtime);
                 }
                 reloadInterval = 0;

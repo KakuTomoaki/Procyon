@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Join: {fileID: 0}
+  MenuCamera: {fileID: 0}
 --- !u!222 &222000010848922660
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMotion : MonoBehaviour {
+public class PlayerMotion : Photon.MonoBehaviour {
 
     private Animator animator;
     private float boostTime;
