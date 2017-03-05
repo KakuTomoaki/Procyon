@@ -64,13 +64,15 @@ public class PhotonManager : Photon.MonoBehaviour
                 newJoin = (GameObject)Instantiate(Join, new Vector3(0, gameObject.transform.position.y - (120 * i) - 240, 0), Quaternion.identity);
                 newJoin.transform.SetParent(CanvasMenu.transform, false);
                 newJoin.name = rooms[i].name;
-                GameObject.Find(rooms[i].name +"/Text").GetComponent<Text>().text = "Room" + count;
+                GameObject.Find(rooms[i].name +"/Text").GetComponent<Text>().text = "Room" + i;
             }
         }
     }
 
     public void CreateRoom()
     {
+        RoomInfo[] rooms = PhotonNetwork.GetRoomList();
+        count = rooms.Length + 1;
 
         string userName = "ユーザ" + count;
         string userId = "user" + count;
@@ -88,8 +90,6 @@ public class PhotonManager : Photon.MonoBehaviour
         roomOptions.maxPlayers = 2; //部屋の最大人数
         roomOptions.isOpen = true; //入室許可する
         roomOptions.isVisible = true; //ロビーから見えるようにする
-
-        count++;
 
         //userIdが名前のルームがなければ作って入室、あれば普通に入室する。 ←よく意味がわからない
         PhotonNetwork.JoinOrCreateRoom(userId, roomOptions, null);
